@@ -1,11 +1,9 @@
 package tests;
 
-import com.google.gson.*;
 import org.testng.annotations.Test;
 import utils.Utils;
 import utils.resources.ElementResource;
 import utils.resources.ElementJSONDataResource;
-import utils.resources.FinderResource;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -20,5 +18,7 @@ public class HomeTests extends BaseTest {
     void testToValidateBasicProjectIsWorking() {
 
         ElementJSONDataResource elementJSONDataResource = Utils.load_json("src/myJson.json");
+        ElementResource a = elementJSONDataResource.find_element("form-field-email");
+        ElementResource b = elementJSONDataResource.find_element_near_to(a, "//div[@class = 'elementor-widget-container']//input[@id='form-field-email']");
     }
 }

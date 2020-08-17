@@ -28,9 +28,11 @@ public class Utils {
         Gson gson = new Gson();
         ElementJSONDataResource elementJSONDataResource = null;
         try {
-            BufferedReader br = new BufferedReader(new FileReader(json_path));
+            BufferedReader br_1 = new BufferedReader(new FileReader(json_path));
+            BufferedReader br_2 = new BufferedReader(new FileReader(json_path));
+            elementJSONDataResource = gson.fromJson(br_1, ElementJSONDataResource.class);
 
-            JsonObject jsonObject = JsonParser.parseReader(br).getAsJsonObject();
+            JsonObject jsonObject = JsonParser.parseReader(br_2).getAsJsonObject();
             Iterator<Map.Entry<String, JsonElement>> it = jsonObject.entrySet().iterator();
 
             ArrayList<String> imports = null;
@@ -39,17 +41,13 @@ public class Utils {
 
             while (it.hasNext()) {
                 Map.Entry<String, JsonElement> obj = it.next();
-                if (obj.getKey().equals("import")) {
-                    imports = gson.fromJson(obj.getValue(), ArrayList.class);
-                } else if (obj.getKey().equals("__FINDERS__")) {
-                    finders = gson.fromJson(obj.getValue(), ArrayList.class);
-                } else {
+                if (obj.getKey().equals("import") == false && obj.getKey().equals("__FINDERS__") == false) {
                     ElementResource element = gson.fromJson(obj.getValue(), ElementResource.class);
                     elementMap.put(obj.getKey(), element);
                 }
             }
 
-            elementJSONDataResource = new ElementJSONDataResource(imports, elementMap, finders);
+            elementJSONDataResource.setElements(elementMap);
         } catch (Exception e) {
             e.printStackTrace();
         }
