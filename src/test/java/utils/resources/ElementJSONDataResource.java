@@ -45,27 +45,6 @@ public class ElementJSONDataResource {
     }
 
     /**
-     * My personal implementation
-     *
-     * get_elements(locator): receives a locator and returns a list of all element objects found with this locator.
-     *
-     * @param locator
-     * @return
-     */
-    public ArrayList<ElementResource> get_elements(String locator) {
-
-        ArrayList<ElementResource> res = new ArrayList<ElementResource>();
-        Iterator<Map.Entry<String, ElementResource>> it = this.elements.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry<String, ElementResource> obj = it.next();
-            if (obj.getValue().getLocator().equals(locator)) {
-                res.add(obj.getValue());
-            }
-        }
-        return res;
-    }
-
-    /**
      * Exercise 1:
      *
      * This method is used to find element objects by elementName
@@ -75,7 +54,9 @@ public class ElementJSONDataResource {
     public ElementResource find_element(String elementName) {
 
         ElementResource elementFounded = null;
+        elementFounded = this.elements.get(elementName);
         int i = 0;
+
         if (this.finders != null) {
             while (i < this.finders.size() && elementFounded == null) {
                 String locator = this.finders.get(i).buildLocator(elementName);
@@ -135,6 +116,34 @@ public class ElementJSONDataResource {
         return nearestElement;
     }
 
+    /**
+     * Method used to get all element by locator
+     *
+     * get_elements(locator): receives a locator and returns a list of all element objects found with this locator.
+     *
+     * @param locator
+     * @return
+     */
+    private ArrayList<ElementResource> get_elements(String locator) {
+
+        ArrayList<ElementResource> res = new ArrayList<ElementResource>();
+        Iterator<Map.Entry<String, ElementResource>> it = this.elements.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry<String, ElementResource> obj = it.next();
+            if (obj.getValue().getLocator().equals(locator)) {
+                res.add(obj.getValue());
+            }
+        }
+        return res;
+    }
+
+    /**
+     * This method is used to get distance between tow position (distance between two points)
+     *
+     * @param firstPos first position
+     * @param secondPos second position
+     * @return distance of tow points
+     */
     private double getDistanceBetweenTwoPosition(PositionResource firstPos, PositionResource secondPos) {
         int dx = secondPos.getX() - firstPos.getX();
         int dy = secondPos.getY() - firstPos.getY();

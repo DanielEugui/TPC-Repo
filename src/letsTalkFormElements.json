@@ -1,0 +1,79 @@
+{
+  "import":[
+     "src/buttonElements.json"
+  ],
+  "name":{
+    "locator":"//div[@class = 'elementor-widget-container']//input[@id='form-field-name']",
+    "position":{
+      "x":5,
+      "y":5
+    },
+    "size":{
+      "width":4,
+      "height":4
+    }
+  },
+  "role":{
+     "locator":"//div[@class = 'elementor-widget-container']//input[@id='form-field-field_1']",
+     "position":{
+        "x":5,
+        "y":5
+     },
+     "size":{
+        "width":4,
+        "height":4
+     }
+  },
+  "mail_field":{
+    "locator":"//div[@class = 'elementor-widget-container']//input[@id='form-field-email']",
+    "position":{
+      "x":10,
+      "y":10
+    },
+    "size":{
+      "width":4,
+      "height":4
+    }
+  },
+  "phone":{
+    "locator":"//div[@class = 'elementor-widget-container']//input[@id='form-field-field_2']",
+    "position":{
+      "x":20,
+      "y":20
+    },
+    "size":{
+      "width":6,
+      "height":6
+    }
+  },
+  "message_field":{
+    "locator":"//div[@class = 'elementor-widget-container']//textarea[@id='form-field-message']",
+    "position":{
+      "x":20,
+      "y":20
+    },
+    "size":{
+      "width":6,
+      "height":6
+    }
+  },
+  "send_button":{
+    "locator":"//button[@type='submit']",
+    "position":{
+      "x":20,
+      "y":20
+    },
+    "size":{
+      "width":6,
+      "height":6
+    }
+  },
+  "__FINDERS__":[
+    {
+      "locator":"//BAD_LOCATOR[@type='_ELEMENT_NAME_']"
+    },
+    {
+      "locator":"//div[@class = 'elementor-widget-container']//input[@id='form-field-_ELEMENT_NAME_']"
+    }
+  ]
+}
