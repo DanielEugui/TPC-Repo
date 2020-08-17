@@ -53,21 +53,4 @@ public class Utils {
         }
         return elementJSONDataResource;
     }
-
-    /**
-     * load_json_option_2 will load json file and return dictionary withou any resource class
-     * @param jsonPath
-     * @return JsonObject that contains all json data
-     */
-    public static JsonObject load_json_option_2 (String jsonPath) {
-        Gson gson = new Gson();
-        JsonObject jsonObject = null;
-        try {
-            BufferedReader buffer = new BufferedReader(new FileReader(jsonPath));
-            jsonObject = JsonParser.parseReader(buffer).getAsJsonObject();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return jsonObject;
-    }
 }
